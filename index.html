@@ -6,169 +6,225 @@
 <title>Mohamed Brakat — Lead Cost Control Engineer</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --navy:#0d1b2e;--navy2:#112240;--navy3:#1a2f4a;
-    --gold:#c9a84c;--gold2:#e8c56e;--blue:#3b82f6;
-    --teal:#2dd4bf;--text:#ccd6f6;--text2:#8892b0;
-    --white:#e6f1ff;
-  }
+  :root{--navy:#0d1b2e;--navy2:#112240;--navy3:#1a2f4a;--gold:#c9a84c;--gold2:#e8c56e;--blue:#3b82f6;--teal:#2dd4bf;--text:#ccd6f6;--text2:#8892b0;--white:#e6f1ff}
   html{scroll-behavior:smooth}
   body{background:var(--navy);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6}
-
-  /* NAV */
   nav{position:fixed;top:0;width:100%;background:rgba(13,27,46,.95);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid rgba(201,168,76,.2);padding:0 5%}
   .nav-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-  .nav-logo{font-size:1.1rem;font-weight:700;color:var(--gold);letter-spacing:.05em}
-  .nav-links{display:flex;gap:2rem;list-style:none}
-  .nav-links a{color:var(--text2);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+  .nav-logo{font-size:1.1rem;font-weight:700;color:var(--gold)}
+  .nav-links{display:flex;gap:1.5rem;list-style:none}
+  .nav-links a{color:var(--text2);text-decoration:none;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
   .nav-links a:hover{color:var(--gold)}
-
-  /* SECTIONS */
   section{padding:100px 5%}
   .container{max-width:1200px;margin:auto}
   .section-title{font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:.5rem}
   .section-title span{color:var(--gold)}
   .section-line{width:60px;height:3px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:3rem}
+  .fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+  .fade-up.visible{opacity:1;transform:translateY(0)}
+  .fade-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+  .fade-left.visible{opacity:1;transform:translateX(0)}
+  .fade-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+  .fade-right.visible{opacity:1;transform:translateX(0)}
 
   /* HERO */
   #hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;position:relative;overflow:hidden}
   #hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.08),transparent 70%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;width:100%}
+  .hero-left{min-width:0;flex:1}
   .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:.4rem 1rem;font-size:.8rem;color:var(--gold);margin-bottom:1.5rem;letter-spacing:.06em}
-  .hero-name{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1rem}
-  .hero-title{font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--gold);font-weight:500;margin-bottom:1rem}
-  .hero-sub{color:var(--text2);font-size:1rem;margin-bottom:2rem;max-width:550px}
+  .hero-name{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:1rem}
+  .hero-title{font-size:clamp(1rem,2vw,1.4rem);color:var(--gold);font-weight:500;margin-bottom:1rem}
+  .hero-sub{color:var(--text2);font-size:.95rem;margin-bottom:2rem;max-width:550px}
   .hero-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
-  .tag{background:rgba(17,34,64,.8);border:1px solid rgba(59,130,246,.3);border-radius:4px;padding:.3rem .8rem;font-size:.8rem;color:var(--blue)}
-  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:100%;margin-bottom:2.5rem}
-  .stat{background:rgba(17,34,64,.8);border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:1.2rem;text-align:center}
-  .stat-num{font-size:1.8rem;font-weight:700;color:var(--gold)}
-  .stat-label{font-size:.75rem;color:var(--text2);margin-top:.2rem;line-height:1.3}
+  .tag{background:rgba(17,34,64,.8);border:1px solid rgba(59,130,246,.3);border-radius:4px;padding:.3rem .8rem;font-size:.78rem;color:var(--blue)}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.5rem;width:100%;max-width:100%}
+  .stat{background:rgba(17,34,64,.8);border:1px solid rgba(201,168,76,.2);border-radius:8px;padding:1rem;text-align:center}
+  .stat-num{font-size:1.6rem;font-weight:700;color:var(--gold)}
+  .stat-label{font-size:.72rem;color:var(--text2);margin-top:.2rem;line-height:1.3}
   .hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
-  .btn-primary{background:var(--gold);color:#0d1b2e;padding:.75rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.9rem;transition:all .2s}
+  .btn-primary{background:var(--gold);color:#0d1b2e;padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.9rem;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer}
   .btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
-  .btn-outline{border:1px solid var(--gold);color:var(--gold);padding:.75rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s}
+  .btn-outline{border:1px solid var(--gold);color:var(--gold);padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
   .btn-outline:hover{background:rgba(201,168,76,.1)}
+  .btn-cv{background:rgba(45,212,191,.1);border:1px solid var(--teal);color:var(--teal);padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;cursor:pointer}
+  .btn-cv:hover{background:rgba(45,212,191,.2);transform:translateY(-2px)}
+
+  /* PHOTO */
+  .hero-photo-wrap{position:relative;flex-shrink:0}
+  .hero-photo-ring{width:280px;height:280px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--gold),var(--teal));position:relative}
+  .hero-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--navy)}
+  .hero-photo-badge{position:absolute;bottom:10px;right:10px;background:var(--navy2);border:2px solid var(--gold);border-radius:8px;padding:.4rem .8rem;font-size:.75rem;font-weight:700;color:var(--gold);white-space:nowrap}
 
   /* ABOUT */
   #about{background:var(--navy2)}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-  .about-text{font-size:1rem;color:var(--text2);line-height:1.8;margin-bottom:1.5rem}
-  .about-bullets{list-style:none;display:flex;flex-direction:column;gap:.8rem}
-  .about-bullets li{display:flex;align-items:flex-start;gap:.8rem;font-size:.9rem;color:var(--text2)}
+  .about-grid{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start}
+  .about-photo-col{display:flex;flex-direction:column;align-items:center;gap:1rem}
+  .about-photo-ring{width:160px;height:160px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(--gold),var(--teal))}
+  .about-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--navy2)}
+  .about-name{font-size:1rem;font-weight:700;color:var(--white);text-align:center}
+  .about-role{font-size:.78rem;color:var(--gold);text-align:center}
+  .about-text{font-size:.95rem;color:var(--text2);line-height:1.8;margin-bottom:1.2rem}
+  .about-bullets{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.5rem}
+  .about-bullets li{display:flex;align-items:flex-start;gap:.8rem;font-size:.88rem;color:var(--text2)}
   .about-bullets li::before{content:'◆';color:var(--gold);flex-shrink:0;margin-top:.1rem}
-  .cert-card{background:var(--navy3);border:1px solid rgba(201,168,76,.3);border-radius:10px;padding:1.5rem;margin-bottom:1.5rem}
-  .cert-title{font-size:1.4rem;font-weight:700;color:var(--gold);margin-bottom:.3rem}
-  .cert-sub{font-size:.85rem;color:var(--text2)}
-  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-  .kpi{background:var(--navy3);border-left:3px solid var(--gold);border-radius:6px;padding:1rem}
-  .kpi-num{font-size:1.6rem;font-weight:700;color:var(--gold2)}
-  .kpi-text{font-size:.8rem;color:var(--text2);margin-top:.2rem}
+  .cert-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .cert-badge{background:var(--navy3);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:.8rem 1.2rem;flex:1;min-width:180px}
+  .cert-badge-title{font-size:1.1rem;font-weight:700;color:var(--gold)}
+  .cert-badge-sub{font-size:.75rem;color:var(--text2);margin-top:.2rem}
+  .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem}
+  .kpi{background:var(--navy3);border-left:3px solid var(--gold);border-radius:6px;padding:.8rem 1rem}
+  .kpi-num{font-size:1.4rem;font-weight:700;color:var(--gold2)}
+  .kpi-text{font-size:.75rem;color:var(--text2);margin-top:.1rem}
+
+  /* TIMELINE */
+  #timeline{background:var(--navy)}
+  .timeline{position:relative;max-width:900px;margin:auto}
+  .timeline::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),rgba(201,168,76,.1))}
+  .tl-item{display:flex;justify-content:flex-end;padding-right:calc(50% + 2.5rem);margin-bottom:2.5rem;position:relative}
+  .tl-item:nth-child(even){justify-content:flex-start;padding-right:0;padding-left:calc(50% + 2.5rem)}
+  .tl-dot{position:absolute;left:50%;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--navy);top:1.2rem;z-index:1}
+  .tl-card{background:var(--navy2);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:1.4rem;max-width:380px;transition:border-color .3s,transform .3s}
+  .tl-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .tl-year{font-size:.75rem;color:var(--gold);font-weight:700;letter-spacing:.1em;margin-bottom:.3rem}
+  .tl-title{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.2rem}
+  .tl-company{font-size:.82rem;color:var(--blue);margin-bottom:.5rem}
+  .tl-desc{font-size:.8rem;color:var(--text2);line-height:1.6}
 
   /* SKILLS */
+  #skills{background:var(--navy2)}
   .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-  .skill-group{background:var(--navy2);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:1.5rem}
-  .skill-group-title{font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid rgba(201,168,76,.15)}
-  .skill-item{margin-bottom:1rem}
+  .skill-group{background:var(--navy3);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:1.5rem}
+  .skill-group-title{font-size:.95rem;font-weight:600;color:var(--gold);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .skill-item{margin-bottom:.9rem}
   .skill-header{display:flex;justify-content:space-between;margin-bottom:.4rem}
-  .skill-name{font-size:.9rem;color:var(--text)}
-  .skill-pct{font-size:.85rem;color:var(--gold);font-weight:600}
+  .skill-name{font-size:.85rem;color:var(--text)}
+  .skill-pct{font-size:.82rem;color:var(--gold);font-weight:600}
   .skill-bar{height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
-  .skill-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width 1s ease}
+  .skill-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;transition:width 1.2s ease}
 
   /* COMPETENCIES */
-  #competencies{background:var(--navy2)}
-  .comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-  .comp-card{background:var(--navy3);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:1.5rem;border-top:3px solid var(--gold);transition:transform .2s,border-color .2s}
-  .comp-card:hover{transform:translateY(-4px);border-color:var(--gold)}
-  .comp-icon{font-size:1.5rem;margin-bottom:.8rem}
-  .comp-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.6rem}
-  .comp-desc{font-size:.85rem;color:var(--text2);line-height:1.7}
+  #competencies{background:var(--navy)}
+  .comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+  .comp-card{background:var(--navy2);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:1.5rem;border-top:3px solid var(--gold);transition:transform .2s}
+  .comp-card:hover{transform:translateY(-4px)}
+  .comp-icon{font-size:1.4rem;margin-bottom:.7rem}
+  .comp-title{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+  .comp-desc{font-size:.82rem;color:var(--text2);line-height:1.7}
 
   /* PROJECTS */
-  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
-  .proj-card{background:var(--navy2);border:1px solid rgba(59,130,246,.2);border-radius:10px;overflow:hidden;transition:transform .2s,border-color .2s}
+  #projects{background:var(--navy2)}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+  .proj-card{background:var(--navy3);border:1px solid rgba(59,130,246,.2);border-radius:10px;overflow:hidden;transition:transform .2s,border-color .2s}
   .proj-card:hover{transform:translateY(-4px);border-color:var(--gold)}
-  .proj-header{background:var(--navy3);padding:1.2rem 1.5rem;border-bottom:1px solid rgba(201,168,76,.15)}
-  .proj-name{font-size:1.05rem;font-weight:700;color:var(--white)}
-  .proj-role{font-size:.8rem;color:var(--gold);margin-top:.2rem}
-  .proj-body{padding:1.2rem 1.5rem}
-  .proj-meta{display:flex;justify-content:space-between;margin-bottom:1rem}
-  .proj-loc{font-size:.8rem;color:var(--text2)}
-  .proj-val{font-size:.85rem;font-weight:700;color:var(--gold2)}
-  .proj-progress{margin-bottom:1rem}
-  .proj-prog-label{display:flex;justify-content:space-between;font-size:.78rem;color:var(--text2);margin-bottom:.3rem}
+  .proj-header{background:var(--navy2);padding:1.1rem 1.3rem;border-bottom:1px solid rgba(201,168,76,.15)}
+  .proj-name{font-size:1rem;font-weight:700;color:var(--white)}
+  .proj-role{font-size:.78rem;color:var(--gold);margin-top:.2rem}
+  .proj-body{padding:1.1rem 1.3rem}
+  .proj-meta{display:flex;justify-content:space-between;margin-bottom:.8rem;flex-wrap:wrap;gap:.4rem}
+  .proj-loc{font-size:.78rem;color:var(--text2)}
+  .proj-val{font-size:.82rem;font-weight:700;color:var(--gold2)}
+  .proj-progress{margin-bottom:.8rem}
+  .proj-prog-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text2);margin-bottom:.3rem}
   .proj-prog-bar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
-  .proj-prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:2px}
-  .proj-bullets{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-  .proj-bullets li{font-size:.82rem;color:var(--text2);display:flex;gap:.6rem}
-  .proj-bullets li::before{content:'◆';color:var(--gold);flex-shrink:0;font-size:.7rem;margin-top:.2rem}
+  .proj-prog-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:2px;width:0;transition:width 1.2s ease}
+  .proj-bullets{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+  .proj-bullets li{font-size:.8rem;color:var(--text2);display:flex;gap:.6rem}
+  .proj-bullets li::before{content:'◆';color:var(--gold);flex-shrink:0;font-size:.65rem;margin-top:.2rem}
 
   /* ACHIEVEMENTS */
-  #achievements{background:var(--navy2)}
-  .achieve-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;margin-bottom:3rem}
-  .achieve-stat{background:var(--navy3);border-radius:10px;padding:1.5rem;text-align:center;position:relative;overflow:hidden}
+  #achievements{background:var(--navy)}
+  .achieve-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.2rem;margin-bottom:3rem}
+  .achieve-stat{background:var(--navy2);border-radius:10px;padding:1.3rem;text-align:center;position:relative;overflow:hidden}
   .achieve-stat::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
   .achieve-stat:nth-child(1)::before{background:var(--gold)}
   .achieve-stat:nth-child(2)::before{background:var(--blue)}
   .achieve-stat:nth-child(3)::before{background:var(--teal)}
   .achieve-stat:nth-child(4)::before{background:#c084fc}
-  .achieve-num{font-size:2rem;font-weight:700;color:var(--gold)}
-  .achieve-label{font-size:.8rem;color:var(--text2);margin-top:.3rem;line-height:1.4}
-  .contrib-title{font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1.2rem}
-  .contrib-list{list-style:none;display:flex;flex-direction:column;gap:.9rem}
-  .contrib-list li{display:flex;gap:.8rem;font-size:.9rem;color:var(--text2);line-height:1.6}
+  .achieve-num{font-size:1.7rem;font-weight:700;color:var(--gold)}
+  .achieve-label{font-size:.75rem;color:var(--text2);margin-top:.3rem;line-height:1.4}
+  .contrib-title{font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1rem}
+  .contrib-list{list-style:none;display:flex;flex-direction:column;gap:.8rem}
+  .contrib-list li{display:flex;gap:.8rem;font-size:.88rem;color:var(--text2);line-height:1.6}
   .contrib-list li::before{content:'▸';color:var(--gold);flex-shrink:0}
 
   /* SERVICES */
-  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-  .svc-card{background:var(--navy2);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:1.5rem;transition:all .2s}
+  #services{background:var(--navy2)}
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+  .svc-card{background:var(--navy3);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:1.4rem;transition:all .2s}
   .svc-card:hover{border-color:var(--gold);transform:translateY(-3px)}
-  .svc-title{font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.7rem;padding-bottom:.7rem;border-bottom:1px solid rgba(201,168,76,.2)}
-  .svc-desc{font-size:.85rem;color:var(--text2);line-height:1.7}
+  .svc-title{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:.6rem;padding-bottom:.6rem;border-bottom:1px solid rgba(201,168,76,.2)}
+  .svc-desc{font-size:.82rem;color:var(--text2);line-height:1.7}
+
+  /* EDUCATION */
+  #education{background:var(--navy)}
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+  .edu-card{background:var(--navy2);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:1.5rem}
+  .edu-icon{font-size:1.5rem;margin-bottom:.8rem}
+  .edu-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+  .edu-sub{font-size:.82rem;color:var(--gold);margin-bottom:.8rem}
+  .edu-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+  .edu-list li{font-size:.8rem;color:var(--text2);display:flex;gap:.6rem}
+  .edu-list li::before{content:'✓';color:var(--teal);flex-shrink:0}
 
   /* CONTACT */
   #contact{background:var(--navy2)}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-  .contact-intro{font-size:1rem;color:var(--text2);line-height:1.8;margin-bottom:2rem}
-  .contact-items{display:flex;flex-direction:column;gap:1.2rem}
-  .contact-item{display:flex;align-items:center;gap:1rem;background:var(--navy3);border-radius:8px;padding:1rem 1.2rem;border:1px solid rgba(201,168,76,.1);text-decoration:none;transition:border-color .2s}
+  .contact-intro{font-size:.95rem;color:var(--text2);line-height:1.8;margin-bottom:2rem}
+  .contact-items{display:flex;flex-direction:column;gap:1rem}
+  .contact-item{display:flex;align-items:center;gap:1rem;background:var(--navy3);border-radius:8px;padding:.9rem 1.1rem;border:1px solid rgba(201,168,76,.1);text-decoration:none;transition:border-color .2s}
   .contact-item:hover{border-color:var(--gold)}
-  .contact-icon{width:40px;height:40px;border-radius:50%;background:rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-  .contact-label{font-size:.75rem;color:var(--text2);margin-bottom:.2rem}
-  .contact-val{font-size:.9rem;color:var(--text);font-weight:500}
+  .contact-icon{width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+  .contact-label{font-size:.72rem;color:var(--text2);margin-bottom:.1rem}
+  .contact-val{font-size:.85rem;color:var(--text);font-weight:500}
   .contact-form{background:var(--navy3);border-radius:12px;padding:2rem;border:1px solid rgba(201,168,76,.15)}
-  .form-group{margin-bottom:1.2rem}
-  .form-group label{display:block;font-size:.8rem;color:var(--text2);margin-bottom:.5rem;letter-spacing:.05em}
-  .form-group input,.form-group textarea{width:100%;background:var(--navy);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:.75rem 1rem;color:var(--text);font-size:.9rem;outline:none;transition:border-color .2s;font-family:inherit}
+  .form-group{margin-bottom:1.1rem}
+  .form-group label{display:block;font-size:.78rem;color:var(--text2);margin-bottom:.4rem;letter-spacing:.05em}
+  .form-group input,.form-group textarea{width:100%;background:var(--navy);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:.7rem 1rem;color:var(--text);font-size:.88rem;outline:none;transition:border-color .2s;font-family:inherit}
   .form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
-  .form-group textarea{height:120px;resize:vertical}
-  .btn-submit{width:100%;background:var(--gold);color:#0d1b2e;border:none;padding:.85rem;border-radius:6px;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .2s}
+  .form-group textarea{height:110px;resize:vertical}
+  .btn-submit{width:100%;background:var(--gold);color:#0d1b2e;border:none;padding:.8rem;border-radius:6px;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s}
   .btn-submit:hover{background:var(--gold2)}
-
-  /* FOOTER */
   footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:2rem 5%;text-align:center}
-  .footer-text{font-size:.85rem;color:var(--text2)}
+  .footer-text{font-size:.82rem;color:var(--text2)}
   .footer-text span{color:var(--gold)}
 
+  /* CV MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center}
+  .modal-overlay.open{display:flex}
+  .modal{background:var(--navy2);border:1px solid rgba(201,168,76,.3);border-radius:14px;padding:2.5rem;max-width:440px;width:90%;text-align:center}
+  .modal h3{font-size:1.3rem;color:var(--white);margin-bottom:.8rem}
+  .modal p{font-size:.88rem;color:var(--text2);margin-bottom:1.5rem;line-height:1.7}
+  .modal-btns{display:flex;flex-direction:column;gap:.8rem}
+  .modal-btn{padding:.8rem 1.5rem;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;display:block;transition:all .2s;text-align:center}
+  .modal-close{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text2);margin-top:.5rem;cursor:pointer;padding:.6rem;border-radius:8px;font-size:.82rem;width:100%}
+  .modal-close:hover{border-color:var(--gold);color:var(--gold)}
+
   @media(max-width:768px){
-    .about-grid,.contact-grid{grid-template-columns:1fr}
-    .hero-stats{grid-template-columns:repeat(3,1fr)}
-    .kpi-grid{grid-template-columns:1fr 1fr}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-photo-wrap{display:none}
+    .about-grid{grid-template-columns:1fr}
+    .contact-grid,.edu-grid{grid-template-columns:1fr}
+    .hero-stats{grid-template-columns:repeat(2,1fr)}
+    .timeline::before{left:1rem}
+    .tl-item,.tl-item:nth-child(even){justify-content:flex-start;padding-right:0;padding-left:3rem}
+    .tl-dot{left:1rem}
+    .tl-card{max-width:100%}
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">MB</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#timeline">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -177,26 +233,38 @@
 <!-- HERO -->
 <section id="hero">
   <div class="container">
-    <div class="hero-badge">🏆 PMP® Certified — Cert #3886888</div>
-    <h1 class="hero-name">Mohamed<br>Brakat</h1>
-    <div class="hero-title">Lead Cost Control Engineer</div>
-    <p class="hero-sub">Power Plants • EPC Contracts • Residential & Commercial<br>Available for Freelance Engagements & Independent Consulting</p>
-    <div class="hero-tags">
-      <span class="tag">EVM Specialist</span>
-      <span class="tag">FIDIC EPC</span>
-      <span class="tag">Power Generation</span>
-      <span class="tag">AI & Automation</span>
-      <span class="tag">Claims Management</span>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">8+</div><div class="stat-label">Years of Experience</div></div>
-      <div class="stat"><div class="stat-num">$724M</div><div class="stat-label">Largest Single EPC Contract</div></div>
-      <div class="stat"><div class="stat-num">$1.9B+</div><div class="stat-label">Total Portfolio Value</div></div>
-      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Mega Projects Delivered</div></div>
-    </div>
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Get In Touch</a>
-      <a href="#projects" class="btn-outline">View Projects</a>
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-badge">🏆 PMP® Certified — Cert #3886888</div>
+        <h1 class="hero-name">Mohamed<br>Brakat</h1>
+        <div class="hero-title">Lead Cost Control Engineer</div>
+        <p class="hero-sub">Power Plants • EPC Contracts • Residential & Commercial<br>Available for Freelance Engagements & Independent Consulting</p>
+        <div class="hero-tags">
+          <span class="tag">EVM Specialist</span>
+          <span class="tag">FIDIC EPC</span>
+          <span class="tag">Power Generation</span>
+          <span class="tag">AI & Automation</span>
+          <span class="tag">Claims Management</span>
+          <span class="tag">PMP®</span>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num" data-count="8">0</div><div class="stat-label">Years of Experience</div></div>
+          <div class="stat"><div class="stat-num">$724M</div><div class="stat-label">Largest EPC Contract</div></div>
+          <div class="stat"><div class="stat-num">$1.9B+</div><div class="stat-label">Total Portfolio Value</div></div>
+          <div class="stat"><div class="stat-num" data-count="4">0</div><div class="stat-label">Mega Projects</div></div>
+        </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary">✉ Get In Touch</a>
+          <a href="#projects" class="btn-outline">◎ View Projects</a>
+          <button class="btn-cv" onclick="document.getElementById('cvModal').classList.add('open')">⬇ Download CV</button>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring">
+          <img class="hero-photo" src="https://i.imgur.com/placeholder.jpg" alt="Mohamed Brakat" id="heroImg"/>
+        </div>
+        <div class="hero-photo-badge">PMP® Certified</div>
+      </div>
     </div>
   </div>
 </section>
@@ -204,13 +272,25 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <div class="section-title">About <span>Me</span></div>
-    <div class="section-line"></div>
+    <div class="section-title fade-up">About <span>Me</span></div>
+    <div class="section-line fade-up"></div>
     <div class="about-grid">
-      <div>
-        <p class="about-text">PMP®-certified cost control professional with 8 years of experience across Power Generation, EPC, Residential, and Commercial projects. Proven track record managing $724M+ in project value.</p>
-        <p class="about-text">AI committee member & automation expert — leveraging Claude AI, N8N, and Python scripting to streamline reporting, eliminate manual work, and deliver faster, more accurate financial insights.</p>
-        <p class="about-text">Specialized in FIDIC-based EPC environments with a strong record in EVM, claims management, and executive-level reporting.</p>
+      <div class="about-photo-col fade-left">
+        <div class="about-photo-ring">
+          <img class="about-photo" src="https://i.imgur.com/placeholder.jpg" alt="Mohamed Brakat" id="aboutImg"/>
+        </div>
+        <div class="about-name">Mohamed Brakat</div>
+        <div class="about-role">Lead Cost Control Engineer</div>
+        <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem">
+          <div class="kpi" style="text-align:center"><div class="kpi-num">$724M</div><div class="kpi-text">Rabegh CCPP — EPC</div></div>
+          <div class="kpi" style="text-align:center"><div class="kpi-num">~$550M</div><div class="kpi-text">Al Alamein (27B EGP)</div></div>
+          <div class="kpi" style="text-align:center"><div class="kpi-num">~$612M</div><div class="kpi-text">Seashell Playa (30B EGP)</div></div>
+          <div class="kpi" style="text-align:center"><div class="kpi-num">~$21M</div><div class="kpi-text">Palm Hills (1.04B EGP)</div></div>
+        </div>
+      </div>
+      <div class="fade-right">
+        <p class="about-text">PMP®-certified cost control professional with 8+ years of experience across Power Generation, EPC, Residential, and Commercial projects. Proven track record managing $1.9B+ in total project value across 4 mega projects.</p>
+        <p class="about-text">AI committee member & automation expert — leveraging Claude AI, N8N, and Python scripting to streamline reporting, eliminate manual work, and deliver faster, more accurate financial insights. Specialized in FIDIC-based EPC environments with a strong record in EVM, claims management, and executive-level reporting.</p>
         <ul class="about-bullets">
           <li>Comprehensive budget development, baseline control & variance analysis</li>
           <li>Earned Value Management (EVM) — CPI, SPI, EAC / ETC forecasting</li>
@@ -219,59 +299,83 @@
           <li>Cash flow planning, cost trending & cost-at-completion forecasting</li>
           <li>Risk quantification, contingency management & mitigation strategies</li>
         </ul>
-      </div>
-      <div>
-        <div class="cert-card">
-          <div class="cert-title">PMP®</div>
-          <div class="cert-sub">Project Management Professional<br>Cert #3886888 | Granted: Jul 2024 | Valid to: Jul 2027</div>
-        </div>
-        <div class="kpi-grid">
-          <div class="kpi"><div class="kpi-num">$724M</div><div class="kpi-text">Rabegh CCPP — EPC Contract</div></div>
-          <div class="kpi"><div class="kpi-num">~$550M</div><div class="kpi-text">Al Alamein University (27B EGP)</div></div>
-          <div class="kpi"><div class="kpi-num">~$612M</div><div class="kpi-text">Seashell Playa (30B EGP)</div></div>
-          <div class="kpi"><div class="kpi-num">~$21M</div><div class="kpi-text">Palm Hills New Cairo (1.04B EGP)</div></div>
+        <br>
+        <div class="cert-row">
+          <div class="cert-badge"><div class="cert-badge-title">PMP®</div><div class="cert-badge-sub">Project Management Professional<br>Cert #3886888 | Valid to Jul 2027</div></div>
+          <div class="cert-badge"><div class="cert-badge-title">PRMG®</div><div class="cert-badge-sub">Professional Program in Project Management<br>American University in Egypt</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CORE COMPETENCIES -->
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-title fade-up">Career <span>Timeline</span></div>
+    <div class="section-line fade-up"></div>
+    <div class="timeline">
+      <div class="tl-item fade-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">FEB 2025 — PRESENT</div>
+          <div class="tl-title">Sr. Cost Engineer</div>
+          <div class="tl-company">Elsewedy Electric Power Systems — Rabigh, Saudi Arabia</div>
+          <div class="tl-desc">Leading full cost control on the $724M Rabigh CCPP. Budget oversight, EVM implementation, cash flow forecasting, FIDIC claims management ($36.86M portfolio), and executive financial reporting using Oracle ERP.</div>
+        </div>
+      </div>
+      <div class="tl-item fade-right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">NOV 2022 — JAN 2025</div>
+          <div class="tl-title">Senior Cost Control Engineer</div>
+          <div class="tl-company">UECC Palm Hills Group — Cairo, Egypt</div>
+          <div class="tl-desc">Weekly cost reports covering budget, commitments, actuals and forecasts for Palm Hills New Cairo. Subcontractor invoice review, variation reporting, milestone tracking using CCS Candy & SAP ERP.</div>
+        </div>
+      </div>
+      <div class="tl-item fade-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">SEP 2021 — OCT 2022</div>
+          <div class="tl-title">Cost Control Engineer</div>
+          <div class="tl-company">Rowad Modern Engineering (RME) — North Coast, Egypt</div>
+          <div class="tl-desc">Cost estimates, budgets and EVM implementation for Seashell Playa (30B EGP). Change order financial impact analysis, risk mitigation strategies and vendor contract reviews.</div>
+        </div>
+      </div>
+      <div class="tl-item fade-right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">MAR 2020 — AUG 2021</div>
+          <div class="tl-title">Cost Control Engineer</div>
+          <div class="tl-company">Redcon For Construction Co — North Coast, Egypt</div>
+          <div class="tl-desc">Monitored actual costs including manpower productivity, equipment and material waste. Prepared EAC analysis, indirect cost tracking and daily project status reports for Latin District project.</div>
+        </div>
+      </div>
+      <div class="tl-item fade-left">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">NOV 2018 — FEB 2020</div>
+          <div class="tl-title">BIM & Technical Office Engineer</div>
+          <div class="tl-company">Redcon For Construction Co — North Coast, Egypt</div>
+          <div class="tl-desc">IFC drawing study, RFT shop drawings, BIM concrete dimensioning using Revit, BIM coordination and clash detection. Foundation of technical expertise that supports cost engineering today.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETENCIES -->
 <section id="competencies">
   <div class="container">
-    <div class="section-title">Core <span>Competencies</span></div>
-    <div class="section-line"></div>
+    <div class="section-title fade-up">Core <span>Competencies</span></div>
+    <div class="section-line fade-up"></div>
     <div class="comp-grid">
-      <div class="comp-card">
-        <div class="comp-icon">📊</div>
-        <div class="comp-title">Budget Management</div>
-        <div class="comp-desc">Budget development, WBS cost coding, baseline establishment, tracking & variance analysis across all project phases.</div>
-      </div>
-      <div class="comp-card">
-        <div class="comp-icon">📈</div>
-        <div class="comp-title">Earned Value Management</div>
-        <div class="comp-desc">Full EVM implementation: CPI / SPI monitoring, EAC / ETC calculation, and performance trend reporting.</div>
-      </div>
-      <div class="comp-card">
-        <div class="comp-icon">💹</div>
-        <div class="comp-title">Cost Forecasting</div>
-        <div class="comp-desc">Cash flow projections, cost-at-completion analysis, contingency drawdown tracking & trend curves.</div>
-      </div>
-      <div class="comp-card">
-        <div class="comp-icon">📋</div>
-        <div class="comp-title">Contract & Claims Management</div>
-        <div class="comp-desc">FIDIC-based contract administration, variation orders, claims preparation and dispute documentation.</div>
-      </div>
-      <div class="comp-card">
-        <div class="comp-icon">🖥️</div>
-        <div class="comp-title">Reporting & Dashboards</div>
-        <div class="comp-desc">Monthly cost reports, S-curve generation, executive KPI dashboards and project financial summaries.</div>
-      </div>
-      <div class="comp-card">
-        <div class="comp-icon">⚠️</div>
-        <div class="comp-title">Risk & Contingency</div>
-        <div class="comp-desc">Cost risk identification, quantitative risk analysis, contingency planning and mitigation strategies.</div>
-      </div>
+      <div class="comp-card fade-up"><div class="comp-icon">📊</div><div class="comp-title">Budget Management</div><div class="comp-desc">Budget development, WBS cost coding, baseline establishment, tracking & variance analysis across all project phases.</div></div>
+      <div class="comp-card fade-up"><div class="comp-icon">📈</div><div class="comp-title">Earned Value Management</div><div class="comp-desc">Full EVM implementation: CPI / SPI monitoring, EAC / ETC calculation, and performance trend reporting.</div></div>
+      <div class="comp-card fade-up"><div class="comp-icon">💹</div><div class="comp-title">Cost Forecasting</div><div class="comp-desc">Cash flow projections, cost-at-completion analysis, contingency drawdown tracking & trend curves.</div></div>
+      <div class="comp-card fade-up"><div class="comp-icon">📋</div><div class="comp-title">Contract & Claims Management</div><div class="comp-desc">FIDIC-based contract administration, variation orders, claims preparation and dispute documentation.</div></div>
+      <div class="comp-card fade-up"><div class="comp-icon">🖥️</div><div class="comp-title">Reporting & Dashboards</div><div class="comp-desc">Monthly cost reports, S-curve generation, executive KPI dashboards and project financial summaries.</div></div>
+      <div class="comp-card fade-up"><div class="comp-icon">⚠️</div><div class="comp-title">Risk & Contingency</div><div class="comp-desc">Cost risk identification, quantitative risk analysis, contingency planning and mitigation strategies.</div></div>
     </div>
   </div>
 </section>
@@ -279,50 +383,28 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <div class="section-title">Tools & <span>Expertise</span></div>
-    <div class="section-line"></div>
+    <div class="section-title fade-up">Tools & <span>Expertise</span></div>
+    <div class="section-line fade-up"></div>
     <div class="skills-grid">
-      <div class="skill-group">
-        <div class="skill-group-title">Project Management Software</div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Microsoft Excel</span><span class="skill-pct">99%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:99%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Primavera P6</span><span class="skill-pct">97%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:97%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Power BI</span><span class="skill-pct">85%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">SAP / ERP Systems</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">AutoCAD (Review)</span><span class="skill-pct">78%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
-        </div>
+      <div class="skill-group fade-left">
+        <div class="skill-group-title">Project Management & ERP</div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Microsoft Excel (Advanced)</span><span class="skill-pct">99%</span></div><div class="skill-bar"><div class="skill-fill" data-width="99"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Primavera P6</span><span class="skill-pct">97%</span></div><div class="skill-bar"><div class="skill-fill" data-width="97"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">SAP S/4HANA & Oracle ERP</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">CCS Candy</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Power BI</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group fade-up">
+        <div class="skill-group-title">Design & Technical</div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">AutoCAD</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Revit & Navisworks (BIM)</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+      </div>
+      <div class="skill-group fade-right">
         <div class="skill-group-title">AI & Automation</div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Claude AI / Desktop</span><span class="skill-pct">92%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">N8N Automation</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">ChatGPT / OpenAI</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Python Scripting</span><span class="skill-pct">80%</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-        </div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Claude AI / Desktop</span><span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">N8N Automation</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">ChatGPT / OpenAI</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-item"><div class="skill-header"><span class="skill-name">Python Scripting</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
       </div>
     </div>
   </div>
@@ -331,95 +413,39 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <div class="section-title">Project <span>Portfolio</span></div>
-    <div class="section-line"></div>
+    <div class="section-title fade-up">Project <span>Portfolio</span></div>
+    <div class="section-line fade-up"></div>
     <div class="proj-grid">
-      <div class="proj-card">
-        <div class="proj-header">
-          <div class="proj-name">Rabegh CCPP — Combined Cycle PP</div>
-          <div class="proj-role">Lead Cost Control Engineer</div>
-        </div>
+      <div class="proj-card fade-up">
+        <div class="proj-header"><div class="proj-name">Rabegh CCPP — Combined Cycle PP</div><div class="proj-role">Sr. Cost Engineer — Elsewedy Electric</div></div>
         <div class="proj-body">
-          <div class="proj-meta">
-            <span class="proj-loc">📍 Rabegh, Saudi Arabia</span>
-            <span class="proj-val">$724M</span>
-          </div>
-          <div class="proj-progress">
-            <div class="proj-prog-label"><span>Progress</span><span>90%</span></div>
-            <div class="proj-prog-bar"><div class="proj-prog-fill" style="width:90%"></div></div>
-          </div>
-          <ul class="proj-bullets">
-            <li>EPC FIDIC Silver Book — full cost lifecycle</li>
-            <li>EVM: CPI 0.95, BAC $604M, EAC $631.9M</li>
-            <li>Claims portfolio $36.86M (EOT + Variations)</li>
-            <li>$10.5M subcontractor back-charges recovered</li>
-          </ul>
+          <div class="proj-meta"><span class="proj-loc">📍 Rabigh, Saudi Arabia</span><span class="proj-val">$724M</span></div>
+          <div class="proj-progress"><div class="proj-prog-label"><span>Progress</span><span>90%</span></div><div class="proj-prog-bar"><div class="proj-prog-fill" data-width="90"></div></div></div>
+          <ul class="proj-bullets"><li>EPC FIDIC Silver Book — full cost lifecycle</li><li>EVM: CPI 0.95, BAC $604M, EAC $631.9M</li><li>Claims portfolio $36.86M (EOT + Variations)</li><li>$10.5M subcontractor back-charges recovered</li></ul>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-header">
-          <div class="proj-name">Al Alamein International University</div>
-          <div class="proj-role">Cost Control Engineer</div>
-        </div>
+      <div class="proj-card fade-up">
+        <div class="proj-header"><div class="proj-name">Palm Hills New Cairo</div><div class="proj-role">Senior Cost Control Engineer — UECC</div></div>
         <div class="proj-body">
-          <div class="proj-meta">
-            <span class="proj-loc">📍 New Alamein City, Egypt</span>
-            <span class="proj-val">27B EGP (~$550M)</span>
-          </div>
-          <div class="proj-progress">
-            <div class="proj-prog-label"><span>Progress</span><span>100%</span></div>
-            <div class="proj-prog-bar"><div class="proj-prog-fill" style="width:100%"></div></div>
-          </div>
-          <ul class="proj-bullets">
-            <li>Commercial educational campus EPC</li>
-            <li>4 academic + 2 housing buildings</li>
-            <li>Full budget baseline & cost tracking</li>
-            <li>Architectural, structural & MEP works</li>
-          </ul>
+          <div class="proj-meta"><span class="proj-loc">📍 Fifth Settlement, Egypt</span><span class="proj-val">~$21M (1.04B EGP)</span></div>
+          <div class="proj-progress"><div class="proj-prog-label"><span>Progress</span><span>100%</span></div><div class="proj-prog-bar"><div class="proj-prog-fill" data-width="100"></div></div></div>
+          <ul class="proj-bullets"><li>Mega residential compound — 80% villas (500 acres)</li><li>Weekly cost reports: budget, commitments, actuals</li><li>Subcontractor invoice review & variation reporting</li><li>SAP ERP & CCS Candy cost tracking</li></ul>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-header">
-          <div class="proj-name">Palm Hills New Cairo</div>
-          <div class="proj-role">Cost Control Engineer</div>
-        </div>
+      <div class="proj-card fade-up">
+        <div class="proj-header"><div class="proj-name">Seashell Playa — North Coast</div><div class="proj-role">Cost Control Engineer — RME</div></div>
         <div class="proj-body">
-          <div class="proj-meta">
-            <span class="proj-loc">📍 Fifth Settlement, Egypt</span>
-            <span class="proj-val">~$21M (1.04B EGP)</span>
-          </div>
-          <div class="proj-progress">
-            <div class="proj-prog-label"><span>Progress</span><span>100%</span></div>
-            <div class="proj-prog-bar"><div class="proj-prog-fill" style="width:100%"></div></div>
-          </div>
-          <ul class="proj-bullets">
-            <li>Mega residential compound — 80% villas</li>
-            <li>1.04 billion EGP total investment</li>
-            <li>Multi-phase delivery cost control</li>
-            <li>Subcontractor & consultant management</li>
-          </ul>
+          <div class="proj-meta"><span class="proj-loc">📍 Ghazala Bay, Egypt</span><span class="proj-val">30B EGP (~$612M)</span></div>
+          <div class="proj-progress"><div class="proj-prog-label"><span>Progress</span><span>100%</span></div><div class="proj-prog-bar"><div class="proj-prog-fill" data-width="100"></div></div></div>
+          <ul class="proj-bullets"><li>Luxury coastal resort — 955,826 m² BUA</li><li>EVM implementation & cost risk mitigation</li><li>Change order & variation financial impact analysis</li><li>Vendor & subcontractor contract reviews</li></ul>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-header">
-          <div class="proj-name">Seashell Playa — North Coast</div>
-          <div class="proj-role">Cost Control Engineer</div>
-        </div>
+      <div class="proj-card fade-up">
+        <div class="proj-header"><div class="proj-name">Latin District — North Coast</div><div class="proj-role">Cost Control Engineer — Redcon</div></div>
         <div class="proj-body">
-          <div class="proj-meta">
-            <span class="proj-loc">📍 Ghazala Bay, Egypt</span>
-            <span class="proj-val">30B EGP (~$612M)</span>
-          </div>
-          <div class="proj-progress">
-            <div class="proj-prog-label"><span>Progress</span><span>100%</span></div>
-            <div class="proj-prog-bar"><div class="proj-prog-fill" style="width:100%"></div></div>
-          </div>
-          <ul class="proj-bullets">
-            <li>Luxury coastal resort compound</li>
-            <li>1.2 km private Mediterranean beach</li>
-            <li>Villas, chalets & townhouses</li>
-            <li>80% landscaping & waterfront areas</li>
-          </ul>
+          <div class="proj-meta"><span class="proj-loc">📍 North Coast, Egypt</span><span class="proj-val">Large-Scale Development</span></div>
+          <div class="proj-progress"><div class="proj-prog-label"><span>Progress</span><span>100%</span></div><div class="proj-prog-bar"><div class="proj-prog-fill" data-width="100"></div></div></div>
+          <ul class="proj-bullets"><li>Manpower productivity & equipment cost monitoring</li><li>EAC analysis & budget variance reporting</li><li>Indirect cost tracking vs. cost plan</li><li>Daily project status reports & planning coordination</li></ul>
         </div>
       </div>
     </div>
@@ -429,21 +455,22 @@
 <!-- ACHIEVEMENTS -->
 <section id="achievements">
   <div class="container">
-    <div class="section-title">Key <span>Achievements</span></div>
-    <div class="section-line"></div>
+    <div class="section-title fade-up">Key <span>Achievements</span></div>
+    <div class="section-line fade-up"></div>
     <div class="achieve-stats">
-      <div class="achieve-stat"><div class="achieve-num">$724M</div><div class="achieve-label">Rabegh CCPP<br>EPC Contract Value</div></div>
-      <div class="achieve-stat"><div class="achieve-num">~$550M</div><div class="achieve-label">Al Alamein University<br>(27B EGP)</div></div>
-      <div class="achieve-stat"><div class="achieve-num">~$612M</div><div class="achieve-label">Seashell Playa<br>(30B EGP)</div></div>
-      <div class="achieve-stat"><div class="achieve-num">~$21M</div><div class="achieve-label">Palm Hills New Cairo<br>(1.04B EGP)</div></div>
+      <div class="achieve-stat fade-up"><div class="achieve-num">$724M</div><div class="achieve-label">Rabegh CCPP<br>EPC Contract</div></div>
+      <div class="achieve-stat fade-up"><div class="achieve-num">~$612M</div><div class="achieve-label">Seashell Playa<br>(30B EGP)</div></div>
+      <div class="achieve-stat fade-up"><div class="achieve-num">~$550M</div><div class="achieve-label">Al Alamein Univ.<br>(27B EGP)</div></div>
+      <div class="achieve-stat fade-up"><div class="achieve-num">$36.9M</div><div class="achieve-label">Claims Portfolio<br>Managed</div></div>
     </div>
-    <div class="contrib-title">Notable Contributions</div>
-    <ul class="contrib-list">
+    <div class="contrib-title fade-up">Notable Contributions</div>
+    <ul class="contrib-list fade-up">
       <li>Leading full cost control lifecycle on Rabegh CCPP ($724M EPC) — 90% physical completion, CPI 0.95 with 9% gross margin preserved</li>
       <li>Managing $36.86M claims portfolio (EOT, Acceleration & Variation Orders) on FIDIC Silver Book contract</li>
       <li>Produced 20 consecutive monthly Project Financial Reports (PFR) covering EVM, EAC/ETC, and variance root-cause analysis</li>
       <li>Recovered $10.5M in back-charges from subcontractors through systematic performance and cost reconciliation</li>
       <li>Maintained detailed cash flow forecasting model — baseline vs. actual tracking across 8 work packages throughout project lifecycle</li>
+      <li>AI committee member — automated reporting workflows using Claude AI, N8N and Python scripting</li>
     </ul>
   </div>
 </section>
@@ -451,16 +478,44 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
-    <div class="section-title">Services <span>Offered</span></div>
-    <div class="section-line"></div>
-    <p style="color:var(--text2);margin-bottom:2rem;font-style:italic">Available for freelance engagements on Upwork and direct consulting assignments worldwide.</p>
+    <div class="section-title fade-up">Services <span>Offered</span></div>
+    <div class="section-line fade-up"></div>
+    <p style="color:var(--text2);margin-bottom:2rem;font-style:italic" class="fade-up">Available for freelance engagements on Upwork and direct consulting assignments worldwide.</p>
     <div class="svc-grid">
-      <div class="svc-card"><div class="svc-title">Cost Control Setup & Baseline</div><div class="svc-desc">Establish cost management systems, WBS coding, budgets, and reporting frameworks for new projects from scratch.</div></div>
-      <div class="svc-card"><div class="svc-title">EVM Implementation</div><div class="svc-desc">Set up and operate full Earned Value Management: performance measurement baseline, CPI/SPI tracking, EAC reporting.</div></div>
-      <div class="svc-card"><div class="svc-title">Budget Review & Audit</div><div class="svc-desc">Independent review of project budgets, cost forecasts and financial models. Identify risks, gaps and savings opportunities.</div></div>
-      <div class="svc-card"><div class="svc-title">Claims & Variation Orders</div><div class="svc-desc">FIDIC-compliant claim preparation, extension-of-time submissions, SCL protocol delay analysis and variation pricing.</div></div>
-      <div class="svc-card"><div class="svc-title">Cost Reporting & Dashboards</div><div class="svc-desc">Monthly cost reports, S-curve analysis, cash flow dashboards and tailored executive-level financial presentations.</div></div>
-      <div class="svc-card"><div class="svc-title">Training & Mentoring</div><div class="svc-desc">Cost control methodology workshops for project teams. Primavera P6 integration, Excel-based cost models and EVM training.</div></div>
+      <div class="svc-card fade-up"><div class="svc-title">Cost Control Setup & Baseline</div><div class="svc-desc">Establish cost management systems, WBS coding, budgets, and reporting frameworks for new projects from scratch.</div></div>
+      <div class="svc-card fade-up"><div class="svc-title">EVM Implementation</div><div class="svc-desc">Set up and operate full Earned Value Management: performance measurement baseline, CPI/SPI tracking, EAC reporting.</div></div>
+      <div class="svc-card fade-up"><div class="svc-title">Budget Review & Audit</div><div class="svc-desc">Independent review of project budgets, cost forecasts and financial models. Identify risks, gaps and savings opportunities.</div></div>
+      <div class="svc-card fade-up"><div class="svc-title">Claims & Variation Orders</div><div class="svc-desc">FIDIC-compliant claim preparation, extension-of-time submissions, SCL protocol delay analysis and variation pricing.</div></div>
+      <div class="svc-card fade-up"><div class="svc-title">Cost Reporting & Dashboards</div><div class="svc-desc">Monthly cost reports, S-curve analysis, cash flow dashboards and tailored executive-level financial presentations.</div></div>
+      <div class="svc-card fade-up"><div class="svc-title">Training & Mentoring</div><div class="svc-desc">Cost control methodology workshops for project teams. Primavera P6 integration, Excel-based cost models and EVM training.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-title fade-up">Education & <span>Certifications</span></div>
+    <div class="section-line fade-up"></div>
+    <div class="edu-grid">
+      <div class="edu-card fade-left">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-title">Bachelor of Science — Civil Engineering</div>
+        <div class="edu-sub">Mansoura University, Egypt — 2018</div>
+      </div>
+      <div class="edu-card fade-right">
+        <div class="edu-icon">📜</div>
+        <div class="edu-title">Professional Certifications</div>
+        <div class="edu-sub">PMI & American University in Egypt</div>
+        <ul class="edu-list">
+          <li>PMP® — Project Management Professional (PMI) | Cert #3886888</li>
+          <li>PRMG® — Professional Program in Project Management (AUC)</li>
+          <li>Data Analysis — Advanced Excel & Power BI (AUC)</li>
+          <li>Cost Estimation, Budgeting, Monitoring & Controlling</li>
+          <li>Primavera P6 & Project Scheduling — CAD Masters</li>
+          <li>BIM — Building Information Modeling — Elmasri</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -468,44 +523,97 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="section-title">Let's Work <span>Together</span></div>
-    <div class="section-line"></div>
+    <div class="section-title fade-up">Let's Work <span>Together</span></div>
+    <div class="section-line fade-up"></div>
     <div class="contact-grid">
-      <div>
+      <div class="fade-left">
         <p class="contact-intro">Experienced • Reliable • Results-Driven<br><br>Available for Projects Worldwide — Remote & On-Site Engagements — Short & Long Term Contracts.</p>
         <div class="contact-items">
-          <a href="mailto:mohabarakat10@gmail.com" class="contact-item">
-            <div class="contact-icon">✉️</div>
-            <div><div class="contact-label">Email</div><div class="contact-val">mohabarakat10@gmail.com</div></div>
-          </a>
-          <a href="https://linkedin.com/in/mohamed-abd-el-fatah-prmg" target="_blank" class="contact-item">
-            <div class="contact-icon">💼</div>
-            <div><div class="contact-label">LinkedIn</div><div class="contact-val">linkedin.com/in/mohamed-abd-el-fatah-prmg</div></div>
-          </a>
-          <a href="https://upwork.com/freelancers/~01f102f762f935f001" target="_blank" class="contact-item">
-            <div class="contact-icon">🔗</div>
-            <div><div class="contact-label">Upwork</div><div class="contact-val">upwork.com/freelancers/~01f102f762f935f001</div></div>
-          </a>
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div><div class="contact-label">Location</div><div class="contact-val">Based in Saudi Arabia — Available Remotely Worldwide</div></div>
-          </div>
+          <a href="tel:+966539783560" class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><div class="contact-val">+966 539 783 560</div></div></a>
+          <a href="mailto:mohabarakat10@gmail.com" class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-val">mohabarakat10@gmail.com</div></div></a>
+          <a href="https://linkedin.com/in/mohamed-abd-el-fatah-prmg" target="_blank" class="contact-item"><div class="contact-icon">💼</div><div><div class="contact-label">LinkedIn</div><div class="contact-val">linkedin.com/in/mohamed-abd-el-fatah-prmg</div></div></a>
+          <a href="https://upwork.com/freelancers/~01f102f762f935f001" target="_blank" class="contact-item"><div class="contact-icon">🔗</div><div><div class="contact-label">Upwork</div><div class="contact-val">upwork.com/freelancers/~01f102f762f935f001</div></div></a>
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-val">Rabigh, Saudi Arabia — Available Remotely Worldwide</div></div></div>
         </div>
       </div>
-      <div class="contact-form">
-        <div class="form-group"><label>YOUR NAME</label><input type="text" placeholder="John Smith"></div>
-        <div class="form-group"><label>EMAIL ADDRESS</label><input type="email" placeholder="john@company.com"></div>
-        <div class="form-group"><label>PROJECT TYPE</label><input type="text" placeholder="EPC Cost Control, EVM Setup, etc."></div>
-        <div class="form-group"><label>MESSAGE</label><textarea placeholder="Tell me about your project..."></textarea></div>
-        <button class="btn-submit" onclick="alert('Thank you! I will get back to you soon.')">Send Message</button>
+      <div class="fade-right">
+        <div class="contact-form">
+          <div class="form-group"><label>YOUR NAME</label><input type="text" placeholder="John Smith"></div>
+          <div class="form-group"><label>EMAIL ADDRESS</label><input type="email" placeholder="john@company.com"></div>
+          <div class="form-group"><label>PROJECT TYPE</label><input type="text" placeholder="EPC Cost Control, EVM Setup, etc."></div>
+          <div class="form-group"><label>MESSAGE</label><textarea placeholder="Tell me about your project..."></textarea></div>
+          <button class="btn-submit" onclick="alert('Thank you! I will get back to you soon.')">Send Message</button>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p class="footer-text">© 2025 <span>Mohamed Brakat</span> — Lead Cost Control Engineer | PMP® Cert #3886888</p>
+  <p class="footer-text">© 2025 <span>Mohamed Brakat</span> — Lead Cost Control Engineer | PMP® Cert #3886888 | Rabigh, Saudi Arabia</p>
 </footer>
 
+<!-- CV MODAL -->
+<div class="modal-overlay" id="cvModal">
+  <div class="modal">
+    <h3>⬇ Download CV</h3>
+    <p>Click below to download my CV directly, or reach out via email or LinkedIn.</p>
+    <div class="modal-btns">
+      <a href="Mohamed_Brakat_CV.pdf" download class="modal-btn btn-primary">⬇ Download CV (PDF)</a>
+      <a href="mailto:mohabarakat10@gmail.com?subject=CV Request — Mohamed Brakat" class="modal-btn btn-outline">✉ Request via Email</a>
+      <a href="https://linkedin.com/in/mohamed-abd-el-fatah-prmg" target="_blank" class="modal-btn btn-outline">💼 Connect on LinkedIn</a>
+    </div>
+    <button class="modal-close" onclick="document.getElementById('cvModal').classList.remove('open')">✕ Close</button>
+  </div>
+</div>
+
+<script>
+// LOAD PHOTO from uploaded image
+const photoB64 = "PHOTO_BASE64_PLACEHOLDER";
+if(photoB64 !== "PHOTO_BASE64_PLACEHOLDER"){
+  document.getElementById('heroImg').src = photoB64;
+  document.getElementById('aboutImg').src = photoB64;
+}
+
+// SCROLL ANIMATIONS
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.skill-fill[data-width]').forEach(b=>b.style.width=b.dataset.width+'%');
+      e.target.querySelectorAll('.proj-prog-fill[data-width]').forEach(b=>b.style.width=b.dataset.width+'%');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right,.skill-group,.proj-card,.tl-item').forEach(el=>obs.observe(el));
+
+// COUNTING NUMBERS
+const countObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && e.target.dataset.count){
+      const target=+e.target.dataset.count;
+      let cur=0;
+      const step=Math.ceil(target/40);
+      const t=setInterval(()=>{
+        cur=Math.min(cur+step,target);
+        e.target.textContent=cur+(target===8?'+':'');
+        if(cur>=target)clearInterval(t);
+      },40);
+      countObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
+
+// CLOSE MODAL ON OVERLAY CLICK
+document.getElementById('cvModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+
+// EMBED PHOTO
+(function(){
+  const imgs = [document.getElementById('heroImg'), document.getElementById('aboutImg')];
+  // Photo will be embedded when user uploads to GitHub
+})();
+</script>
 </body>
 </html>
