@@ -261,7 +261,7 @@
       </div>
       <div class="hero-photo-wrap">
         <div class="hero-photo-ring">
-          <img class="hero-photo" src="photo.jpg" alt="Mohamed Brakat" id="heroImg"/>
+          <img class="hero-photo" src="photo.jpg" alt="Mohamed Brakat" id="heroImg" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Mohamed+Brakat&size=280&background=c9a84c&color=0d1b2e&bold=true&rounded=true';"/>
         </div>
         <div class="hero-photo-badge">PMP® Certified</div>
       </div>
@@ -277,7 +277,7 @@
     <div class="about-grid">
       <div class="about-photo-col fade-left">
         <div class="about-photo-ring">
-          <img class="about-photo" src="photo.jpg" alt="Mohamed Brakat" id="aboutImg"/>
+          <img class="about-photo" src="photo.jpg" alt="Mohamed Brakat" id="aboutImg" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Mohamed+Brakat&size=160&background=c9a84c&color=0d1b2e&bold=true&rounded=true';"/>
         </div>
         <div class="about-name">Mohamed Brakat</div>
         <div class="about-role">Lead Cost Control Engineer</div>
@@ -559,7 +559,7 @@
     <h3>⬇ Download CV</h3>
     <p>Click below to download my CV directly, or reach out via email or LinkedIn.</p>
     <div class="modal-btns">
-      <a href="Mohamed_Brakat_CV.pdf" download class="modal-btn btn-primary">⬇ Download CV (PDF)</a>
+      <a href="https://mohabarakat10.github.io/Mohamed-Barakat/Mohamed_Brakat_CV.pdf" download="Mohamed_Brakat_CV.pdf" class="modal-btn btn-primary">⬇ Download CV (PDF)</a>
       <a href="mailto:mohabarakat10@gmail.com?subject=CV Request — Mohamed Brakat" class="modal-btn btn-outline">✉ Request via Email</a>
       <a href="https://linkedin.com/in/mohamed-abd-el-fatah-prmg" target="_blank" class="modal-btn btn-outline">💼 Connect on LinkedIn</a>
     </div>
@@ -606,11 +606,7 @@ document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
 // CLOSE MODAL ON OVERLAY CLICK
 document.getElementById('cvModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
 
-// EMBED PHOTO
-(function(){
-  const imgs = [document.getElementById('heroImg'), document.getElementById('aboutImg')];
-  // Photo will be embedded when user uploads to GitHub
-})();
+
 </script>
 </body>
 </html>
