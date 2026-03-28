@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Brakat — Lead Cost Control Engineer</title>
+<title>Mohamed Barakat — Lead Cost Control Engineer</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{--navy:#0d1b2e;--navy2:#112240;--navy3:#1a2f4a;--gold:#c9a84c;--gold2:#e8c56e;--blue:#3b82f6;--teal:#2dd4bf;--text:#ccd6f6;--text2:#8892b0;--white:#e6f1ff}
@@ -49,19 +49,17 @@
   .btn-outline:hover{background:rgba(201,168,76,.1)}
   .btn-cv{background:rgba(45,212,191,.1);border:1px solid var(--teal);color:var(--teal);padding:.7rem 1.5rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;cursor:pointer}
   .btn-cv:hover{background:rgba(45,212,191,.2);transform:translateY(-2px)}
-
-  /* PHOTO */
   .hero-photo-wrap{position:relative;flex-shrink:0}
   .hero-photo-ring{width:320px;height:320px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--gold),var(--gold2));position:relative;overflow:hidden}
-  .hero-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center top;border:4px solid var(--navy)}
+  .hero-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 85%;border:4px solid var(--navy)}
   .hero-photo-badge{position:absolute;bottom:10px;right:10px;background:var(--navy2);border:2px solid var(--gold);border-radius:8px;padding:.4rem .8rem;font-size:.75rem;font-weight:700;color:var(--gold);white-space:nowrap}
 
   /* ABOUT */
   #about{background:var(--navy2)}
   .about-grid{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start}
   .about-photo-col{display:flex;flex-direction:column;align-items:center;gap:1rem}
-  .about-photo-ring{width:160px;height:160px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(--gold),var(--teal))}
-  .about-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid var(--navy2)}
+  .about-photo-ring{width:160px;height:160px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(--gold),var(--gold2))}
+  .about-photo{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 85%;border:3px solid var(--navy2)}
   .about-name{font-size:1rem;font-weight:700;color:var(--white);text-align:center}
   .about-role{font-size:.78rem;color:var(--gold);text-align:center}
   .about-text{font-size:.95rem;color:var(--text2);line-height:1.8;margin-bottom:1.2rem}
@@ -134,13 +132,14 @@
 
   /* ACHIEVEMENTS */
   #achievements{background:var(--navy)}
-  .achieve-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.2rem;margin-bottom:3rem}
+  .achieve-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.2rem;margin-bottom:3rem}
   .achieve-stat{background:var(--navy2);border-radius:10px;padding:1.3rem;text-align:center;position:relative;overflow:hidden}
   .achieve-stat::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
   .achieve-stat:nth-child(1)::before{background:var(--gold)}
   .achieve-stat:nth-child(2)::before{background:var(--blue)}
   .achieve-stat:nth-child(3)::before{background:var(--teal)}
   .achieve-stat:nth-child(4)::before{background:#c084fc}
+  .achieve-stat:nth-child(5)::before{background:#f472b6}
   .achieve-num{font-size:1.7rem;font-weight:700;color:var(--gold)}
   .achieve-label{font-size:.75rem;color:var(--text2);margin-top:.3rem;line-height:1.4}
   .contrib-title{font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1rem}
@@ -188,8 +187,6 @@
   footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.15);padding:2rem 5%;text-align:center}
   .footer-text{font-size:.82rem;color:var(--text2)}
   .footer-text span{color:var(--gold)}
-
-  /* CV MODAL */
   .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center}
   .modal-overlay.open{display:flex}
   .modal{background:var(--navy2);border:1px solid rgba(201,168,76,.3);border-radius:14px;padding:2.5rem;max-width:440px;width:90%;text-align:center}
@@ -199,7 +196,6 @@
   .modal-btn{padding:.8rem 1.5rem;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;text-decoration:none;display:block;transition:all .2s;text-align:center}
   .modal-close{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--text2);margin-top:.5rem;cursor:pointer;padding:.6rem;border-radius:8px;font-size:.82rem;width:100%}
   .modal-close:hover{border-color:var(--gold);color:var(--gold)}
-
   @media(max-width:768px){
     .hero-grid{grid-template-columns:1fr}
     .hero-photo-wrap{display:none}
@@ -251,7 +247,7 @@
           <div class="stat"><div class="stat-num" data-count="8">0</div><div class="stat-label">Years of Experience</div></div>
           <div class="stat"><div class="stat-num">$724M</div><div class="stat-label">Largest EPC Contract</div></div>
           <div class="stat"><div class="stat-num">$1.9B+</div><div class="stat-label">Total Portfolio Value</div></div>
-          <div class="stat"><div class="stat-num" data-count="4">0</div><div class="stat-label">Mega Projects</div></div>
+          <div class="stat"><div class="stat-num" data-count="5">0</div><div class="stat-label">Mega Projects</div></div>
         </div>
         <div class="hero-cta">
           <a href="#contact" class="btn-primary">✉ Get In Touch</a>
@@ -261,7 +257,7 @@
       </div>
       <div class="hero-photo-wrap">
         <div class="hero-photo-ring">
-          <img class="hero-photo" src="photo.jpg" alt="Mohamed Brakat" id="heroImg" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Mohamed+Brakat&size=280&background=c9a84c&color=0d1b2e&bold=true&rounded=true';"/>
+          <img class="hero-photo" src="https://i.ibb.co/Y4GW2Zrv/photo.jpg" alt="Mohamed Barakat" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Mohamed+Barakat&size=320&background=c9a84c&color=0d1b2e&bold=true';"/>
         </div>
         <div class="hero-photo-badge">PMP® Certified</div>
       </div>
@@ -277,19 +273,20 @@
     <div class="about-grid">
       <div class="about-photo-col fade-left">
         <div class="about-photo-ring">
-          <img class="about-photo" src="photo.jpg" alt="Mohamed Brakat" id="aboutImg" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Mohamed+Brakat&size=160&background=c9a84c&color=0d1b2e&bold=true&rounded=true';"/>
+          <img class="about-photo" src="https://i.ibb.co/Y4GW2Zrv/photo.jpg" alt="Mohamed Barakat" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=Mohamed+Barakat&size=160&background=c9a84c&color=0d1b2e&bold=true';"/>
         </div>
-        <div class="about-name">Mohamed Brakat</div>
+        <div class="about-name">Mohamed Barakat</div>
         <div class="about-role">Lead Cost Control Engineer</div>
         <div style="margin-top:1rem;display:flex;flex-direction:column;gap:.5rem">
           <div class="kpi" style="text-align:center"><div class="kpi-num">$724M</div><div class="kpi-text">Rabegh CCPP — EPC</div></div>
-          <div class="kpi" style="text-align:center"><div class="kpi-num">~$550M</div><div class="kpi-text">Al Alamein (27B EGP)</div></div>
-          <div class="kpi" style="text-align:center"><div class="kpi-num">~$612M</div><div class="kpi-text">Seashell Playa (30B EGP)</div></div>
           <div class="kpi" style="text-align:center"><div class="kpi-num">~$21M</div><div class="kpi-text">Palm Hills (1.04B EGP)</div></div>
+          <div class="kpi" style="text-align:center"><div class="kpi-num">~$612M</div><div class="kpi-text">Seashell Playa (30B EGP)</div></div>
+          <div class="kpi" style="text-align:center"><div class="kpi-num">~$306M</div><div class="kpi-text">Latin District (15B EGP)</div></div>
+          <div class="kpi" style="text-align:center"><div class="kpi-num">~$550M</div><div class="kpi-text">Al Alamein (27B EGP)</div></div>
         </div>
       </div>
       <div class="fade-right">
-        <p class="about-text">PMP®-certified cost control professional with 8+ years of experience across Power Generation, EPC, Residential, and Commercial projects. Proven track record managing $1.9B+ in total project value across 4 mega projects.</p>
+        <p class="about-text">PMP®-certified cost control professional with 8+ years of experience across Power Generation, EPC, Residential, and Commercial projects. Proven track record managing $1.9B+ in total project value across 5 mega projects.</p>
         <p class="about-text">AI committee member & automation expert — leveraging Claude AI, N8N, and Python scripting to streamline reporting, eliminate manual work, and deliver faster, more accurate financial insights. Specialized in FIDIC-based EPC environments with a strong record in EVM, claims management, and executive-level reporting.</p>
         <ul class="about-bullets">
           <li>Comprehensive budget development, baseline control & variance analysis</li>
@@ -330,7 +327,7 @@
           <div class="tl-year">NOV 2022 — JAN 2025</div>
           <div class="tl-title">Senior Cost Control Engineer</div>
           <div class="tl-company">UECC Palm Hills Group — Cairo, Egypt</div>
-          <div class="tl-desc">Weekly cost reports covering budget, commitments, actuals and forecasts for Palm Hills New Cairo. Subcontractor invoice review, variation reporting, milestone tracking using CCS Candy & SAP ERP.</div>
+          <div class="tl-desc">Weekly cost reports covering budget, commitments, actuals and forecasts for Palm Hills New Cairo (~$21M). Subcontractor invoice review, variation reporting, milestone tracking using CCS Candy & SAP ERP.</div>
         </div>
       </div>
       <div class="tl-item fade-left">
@@ -339,7 +336,7 @@
           <div class="tl-year">SEP 2021 — OCT 2022</div>
           <div class="tl-title">Cost Control Engineer</div>
           <div class="tl-company">Rowad Modern Engineering (RME) — North Coast, Egypt</div>
-          <div class="tl-desc">Cost estimates, budgets and EVM implementation for Seashell Playa (30B EGP). Change order financial impact analysis, risk mitigation strategies and vendor contract reviews.</div>
+          <div class="tl-desc">Cost estimates, budgets and EVM implementation for Seashell Playa (30B EGP ~$612M). Change order financial impact analysis, risk mitigation strategies and vendor contract reviews.</div>
         </div>
       </div>
       <div class="tl-item fade-right">
@@ -348,7 +345,7 @@
           <div class="tl-year">MAR 2020 — AUG 2021</div>
           <div class="tl-title">Cost Control Engineer</div>
           <div class="tl-company">Redcon For Construction Co — North Coast, Egypt</div>
-          <div class="tl-desc">Monitored actual costs including manpower productivity, equipment and material waste. Prepared EAC analysis, indirect cost tracking and daily project status reports for Latin District project.</div>
+          <div class="tl-desc">Monitored actual costs including manpower productivity, equipment and material waste. Prepared EAC analysis, indirect cost tracking and daily project status reports for Latin District (15B EGP ~$306M).</div>
         </div>
       </div>
       <div class="tl-item fade-left">
@@ -357,7 +354,7 @@
           <div class="tl-year">NOV 2018 — FEB 2020</div>
           <div class="tl-title">BIM & Technical Office Engineer</div>
           <div class="tl-company">Redcon For Construction Co — North Coast, Egypt</div>
-          <div class="tl-desc">IFC drawing study, RFT shop drawings, BIM concrete dimensioning using Revit, BIM coordination and clash detection. Foundation of technical expertise that supports cost engineering today.</div>
+          <div class="tl-desc">IFC drawing study, RFT shop drawings, BIM concrete dimensioning using Revit, BIM coordination and clash detection for Al Alamein International University (27B EGP ~$550M).</div>
         </div>
       </div>
     </div>
@@ -443,7 +440,7 @@
       <div class="proj-card fade-up">
         <div class="proj-header"><div class="proj-name">Latin District — North Coast</div><div class="proj-role">Cost Control Engineer — Redcon</div></div>
         <div class="proj-body">
-          <div class="proj-meta"><span class="proj-loc">📍 North Coast, Egypt</span><span class="proj-val">Large-Scale Development</span></div>
+          <div class="proj-meta"><span class="proj-loc">📍 North Coast, Egypt</span><span class="proj-val">15B EGP (~$306M)</span></div>
           <div class="proj-progress"><div class="proj-prog-label"><span>Progress</span><span>100%</span></div><div class="proj-prog-bar"><div class="proj-prog-fill" data-width="100"></div></div></div>
           <ul class="proj-bullets"><li>Manpower productivity & equipment cost monitoring</li><li>EAC analysis & budget variance reporting</li><li>Indirect cost tracking vs. cost plan</li><li>Daily project status reports & planning coordination</li></ul>
         </div>
@@ -469,7 +466,8 @@
       <div class="achieve-stat fade-up"><div class="achieve-num">$724M</div><div class="achieve-label">Rabegh CCPP<br>EPC Contract</div></div>
       <div class="achieve-stat fade-up"><div class="achieve-num">~$612M</div><div class="achieve-label">Seashell Playa<br>(30B EGP)</div></div>
       <div class="achieve-stat fade-up"><div class="achieve-num">~$550M</div><div class="achieve-label">Al Alamein Univ.<br>(27B EGP)</div></div>
-      <div class="achieve-stat fade-up"><div class="achieve-num">$36.9M</div><div class="achieve-label">Claims Portfolio<br>Managed</div></div>
+      <div class="achieve-stat fade-up"><div class="achieve-num">~$306M</div><div class="achieve-label">Latin District<br>(15B EGP)</div></div>
+      <div class="achieve-stat fade-up"><div class="achieve-num">~$21M</div><div class="achieve-label">Palm Hills<br>(1.04B EGP)</div></div>
     </div>
     <div class="contrib-title fade-up">Notable Contributions</div>
     <ul class="contrib-list fade-up">
@@ -558,7 +556,7 @@
 </section>
 
 <footer>
-  <p class="footer-text">© 2025 <span>Mohamed Brakat</span> — Lead Cost Control Engineer | PMP® Cert #3886888 | Rabigh, Saudi Arabia</p>
+  <p class="footer-text">© 2025 <span>Mohamed Barakat</span> — Lead Cost Control Engineer | PMP® Cert #3886888 | Rabigh, Saudi Arabia</p>
 </footer>
 
 <!-- CV MODAL -->
@@ -567,8 +565,8 @@
     <h3>⬇ Download CV</h3>
     <p>Click below to download my CV directly, or reach out via email or LinkedIn.</p>
     <div class="modal-btns">
-      <a href="https://mohabarakat10.github.io/Mohamed-Barakat/Mohamed_Brakat_CV.pdf" download="Mohamed_Brakat_CV.pdf" class="modal-btn btn-primary">⬇ Download CV (PDF)</a>
-      <a href="mailto:mohabarakat10@gmail.com?subject=CV Request — Mohamed Brakat" class="modal-btn btn-outline">✉ Request via Email</a>
+      <a href="https://mohabarakat10.github.io/Mohamed-Barakat/Mohamed_Brakat_CV.pdf" download="Mohamed_Barakat_CV.pdf" class="modal-btn btn-primary">⬇ Download CV (PDF)</a>
+      <a href="mailto:mohabarakat10@gmail.com?subject=CV Request — Mohamed Barakat" class="modal-btn btn-outline">✉ Request via Email</a>
       <a href="https://linkedin.com/in/mohamed-abd-el-fatah-prmg" target="_blank" class="modal-btn btn-outline">💼 Connect on LinkedIn</a>
     </div>
     <button class="modal-close" onclick="document.getElementById('cvModal').classList.remove('open')">✕ Close</button>
@@ -576,11 +574,6 @@
 </div>
 
 <script>
-const photoB64 = "data:image/jpeg;base64,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";
-document.getElementById('heroImg').src = photoB64;
-document.getElementById('aboutImg').src = photoB64;
-
-// SCROLL ANIMATIONS
 const obs = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -593,7 +586,6 @@ const obs = new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 document.querySelectorAll('.fade-up,.fade-left,.fade-right,.skill-group,.proj-card,.tl-item').forEach(el=>obs.observe(el));
 
-// COUNTING NUMBERS
 const countObs = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting && e.target.dataset.count){
@@ -610,11 +602,7 @@ const countObs = new IntersectionObserver((entries)=>{
   });
 },{threshold:0.5});
 document.querySelectorAll('[data-count]').forEach(el=>countObs.observe(el));
-
-// CLOSE MODAL ON OVERLAY CLICK
 document.getElementById('cvModal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
-
-
 </script>
 </body>
 </html>
